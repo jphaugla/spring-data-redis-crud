@@ -102,7 +102,8 @@ user:firstName:Jason
 	1
 	2
 ```
-### Set with each index value user:lastName:Haugland holding the user idx of each user with a last name of Haugland.  User 5 is Caterhine Haugland so user 5 is in this set.
+### Set with each index value user:lastName:Haugland 
+Holds the user idx of each user with a last name of Haugland.  User 5 is Caterhine Haugland so user 5 is in this set.
 ```bash
 user:lastName:Haugland
 	1
