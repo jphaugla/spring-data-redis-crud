@@ -102,17 +102,22 @@ user:firstName:Jason
 	1
 	2
 ```
-### Set with each index value user:lastName:Haugland 
+#### Set with each index value user:lastName:Haugland 
 Holds the user idx of each user with a last name of Haugland.  User 5 is Caterhine Haugland so user 5 is in this set.
 ```bash
 user:lastName:Haugland
 	1
 	5
 ```
-### Set with all the user ids <b>user</b> 
+#### Set with all the user ids <b>user</b> 
 ```bash
 user
 	1
 	2
 	5
+```
+### Query using index columns firstname and Lastname 
+```bash
+SINTER user:firstName:Jason "user:lastName:Haugland"  # returns 1
+HGETALL user:1
 ```
