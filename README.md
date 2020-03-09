@@ -39,7 +39,7 @@ The java code demonstrates common API actions with the data persisted in REDIS. 
 ## To execute the code
 (Alternatively, this can be run through intelli4j)
 
-1. Complile the code
+1. Compile the code
 ```bash
 mvn package
 ```
@@ -81,34 +81,37 @@ public class User {
 	private String roleName;
 }
 ```
+#### hash created with key of user:1
 for a user with an id=1, This is stored in a Hash with a key of user:1
 (this is stored in a hash and not in a json format but displaying in json)
 ```json
 {"_class":"com.jphaugla.domain.User","id":"1","firstName":"Jason","middleName":"Paul","lastName":"Haugland","roleName":"CEO"}
 ```
-Since firstName and lastName are indexed, they are added to a set key value for each index:
+#### Set for each unique key called user:1:idx
+holds all indexed columns with the column value
+Since firstName and lastName are indexed, two elements are added to this set with the key value for each index.  
 ```bash
 user:1:idx
 	user:firstName:Jason
 	user:lastName:Haugland
 ```
-Then user:firstName:Jason is a set holding the user idx of each user with a first name of jason.  User 2 is Jason Smith so user 2 is in this set.
+#### Set with each index value  user:firstName:Jason
+Then user:firstName:Jason is a set holding the user idx of each user with a first name of jason.  User 1 is Jason Haugland so 1 is in the set.  User 2 is Jason Smith so user 2 is in this set.
 ```bash
 user:firstName:Jason
 	1
 	2
 ```
-user:lastName:Haugland is a set hodle user idx of each user with a last name of Haugland.   User 5 is Caterhine Haugland so user 5 is in this set.
+### Set with each index value user:lastName:Haugland holding the user idx of each user with a last name of Haugland.  User 5 is Caterhine Haugland so user 5 is in this set.
 ```bash
 user:lastName:Haugland
 	1
 	5
 ```
-Finally, user is a set of all the IDs
+### Set with all the user ids <b>user</b> 
 ```bash
 user
 	1
 	2
 	5
 ```
-
